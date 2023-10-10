@@ -13,10 +13,71 @@
 <body>
     <div class="box">
 <div class="conteneur">
-    <div class="conteneur-droit"></div>
-    <div class="conteneur-gauche"></div>
+    <div class="conteneur-droit">
+        <div class="titre-h2"><h2>Ajouter une Tache</h2></div>
+        <div class="div-ajout-tache">
+           
+                <select id="categorie" name="categorie" size="1">
+                    <option value="" disabled selected>Categorie</option>
+                    <option value="Academique">Academique</option>
+                    <option value="Extra-academique">Extra-academique</option>
+                    <option value="Distraction">Distraction</option>
+                </select>
+                
+                <input type="text" id="titre" name="titre" placeholder="Titre">
+                <input type="date" id="date" name="date">
+                <textarea id="description" name="description" placeholder="Description"></textarea>
+
+                <select id="statut" name="statut" size="1">
+                    <option value="" disabled selected>Statut</option>
+                    <option value="Nouveau">Nouveau</option>
+                    <option value="En-cours">En cours</option>
+                    <option value="Terminer">Terminé</option>
+                </select>
+
+                <button id="btn-ajout">Ajouter</button>
+        </div>
+        <div class="div-chart"></div>
+    </div>
+    <div class="conteneur-gauche">
+        <div class="haut">
+            <div class="div-ligne-tache">
+                <h2 class="titre-tache-h2">Liste de taches</h2>
+            </div>
+        <div class="div-tache">
+           <!--  Titre -->
+            <div class="div-titre-todo">
+                <table id="titre-todo">
+                    <tr>
+                      <th class="nu">#</th>
+                      <th class="dat">Date</th>
+                      <th class="tit">Titre</th>
+                      <th class="cat">Categorie</th>
+                      <th class="ope">Operations</th>
+                    </tr>
+                    </table>
+            </div>
+           <!--  Tache a faire -->
+            <div class="div-tache-todo">
+                <table id="tache-todo">
+                   
+                    </table>
+            </div>
+        </div>
+        <div class="div-descrip"><h2>Description</h2></div>
+        
+    </div>
+        <div class="bas">
+            <div class="contenue-description">
+                <p id="contenue-p"></p>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
+
+<div id="snackbar">Veillez remplir tous les champs</div>
+<div id="rempli">L'enregistrement s'est effectué avec success</div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -22,17 +22,318 @@ body {
     height: 52rem;
     border: 1px solid darkcyan;
     display: flex;
+    border-radius: 15px;
 }
 
 .conteneur-droit {
     width: 25%;
-    height: 100%;
-    border: 1px solid darkcyan;
-   
+    height: 100%;  
 }
 
 .conteneur-gauche {
     width: 75%;
     height: 100%;
-    border: 1px solid darkcyan;
+    border-left: 1px solid darkcyan;
 }
+.titre-h2{
+    width: 100%;
+    height: 3.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darkcyan;
+    color: #fff;
+    border-radius: 13px 0px 0px 0px;
+}
+/* ____________________INPUT________________________ */
+.div-ajout-tache{
+width: 100%;
+height: 26rem;
+border-bottom: 1px solid darkcyan;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+}
+input{
+    width: 95%;
+    height: 3rem;
+  border-radius: 5px;
+ outline: none;
+ border-width: 1px;
+ border-image: none;
+ padding: 5px;
+ font-size: larger;
+ color: #858585;
+}
+input:focus-visible{
+    border: 1.5px solid darkcyan;
+}
+select{
+    width: 95%;
+    height: 3rem;  
+    border-radius: 5px;
+    border-image: none;
+    outline: none;
+    border-width: 1px;
+    color:  #858585;
+    font-size: 17px;
+    
+}
+select:focus-visible{
+    border: 1.5px solid darkcyan;
+ 
+}
+textarea{
+    width: 95%;
+    height: 3rem;
+    border-radius: 5px;
+    outline: none;
+    border-image: none;
+    border-width: 1px;  
+    font-size: 18px;
+padding: 5px;
+color: #858585;
+}
+textarea:focus-visible{
+    border: 1.5px solid darkcyan;
+}
+textarea::placeholder{
+    padding: 5px;
+    font-size: 18px;
+}
+#btn-ajout{
+    font-weight: 800;
+    font-size: 26px;
+    width: 95%;
+    height: 3rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: darkcyan;
+    color: #fff;
+    transition: 0.1s ease-in;
+    cursor: pointer;
+
+}
+#btn-ajout:hover{
+  background-color:  #056e6e;
+}
+
+#btn-ajout:active{
+    border: 1px solid darkcyan;
+    background-color: #fff;
+    color: darkcyan
+}
+/* ___________________________Alert_____Nom Rempli____________________________________ */
+
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #e51a1a;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  /* ___________________________Alert_____Rempli____________________________________ */
+
+#rempli {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: darkcyan;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+  
+  #rempli.show {
+    visibility: visible;
+    -webkit-animation: fadein 1s, fadeout 0.5s 3s;
+    animation: fadein 1s, fadeout 1s 3s;
+  }
+  
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+/* ___________________________COTÉ GAUCHE________________________________ */
+.haut{
+    width: 100%;
+    height: 77%;
+  
+
+}
+.div-ligne-tache{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+.div-descrip{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    color: darkcyan;
+}
+.titre-tache-h2{
+    color: darkcyan;
+}
+.div-tache{
+    width: 100%;
+    border-bottom: 1px solid darkcyan;
+    height: 74%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bas{
+    width: 100%;
+    height: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenue-description{
+    width: 98%;
+    height: 87%;
+    border-radius: 10px;
+    border: 1px solid darkcyan;
+    padding: 5px;
+    color: #858585;
+    word-break: break-all;
+}
+.div-titre-todo{
+    width: 98%;
+    height: 12%;
+    z-index: 10;
+}
+.div-tache-todo{
+    width: 98%;
+    height: 79%;
+    z-index: 10;
+    border: 1px solid navy;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+#titre-todo{
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    border-collapse: separate;
+  } 
+  #titre-todo th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: darkcyan;
+    color: white;
+    padding: 8px;
+    z-index: 10;
+  } 
+/*______________________________ */
+  #tache-todo{
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    border-collapse: separate;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  } 
+  #tache-todo td{
+    font-size: 15px;
+    word-break: break-all;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #2abcbcc1;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    z-index: 1;
+  } 
+  #tache-todo tr{
+ height: 65px;
+ z-index: 1;
+ overflow-x: hidden;
+ overflow-y: scroll;
+ scroll-snap-type: y mandatory;
+  } 
+  .nu{
+    width: 8.8%;
+  }
+  .dat{
+    width: 16%;
+  }
+  .tit{
+    width: 16%;
+  }
+  .cat{
+    width: 16%;
+  }
+  .ope{
+    width: 16%;
+  }
+  #tr-tache-todo{
+
+  }
