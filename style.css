@@ -19,7 +19,7 @@ body {
 
 .conteneur {
   width: 90%;
-  height: 52rem;
+  height:93vh;
   border: 1px solid darkcyan;
   display: flex;
   border-radius: 15px;
@@ -113,6 +113,22 @@ textarea::placeholder {
 }
 
 #btn-ajout {
+  font-weight: 800;
+  font-size: 26px;
+  width: 95%;
+  height: 3rem;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: darkcyan;
+  color: #fff;
+  transition: 0.1s ease-in;
+  cursor: pointer;
+
+}
+
+#btn-Mise-a-Jour {
+  display: none;
   font-weight: 800;
   font-size: 26px;
   width: 95%;
@@ -282,7 +298,151 @@ textarea::placeholder {
     opacity: 0;
   }
 }
+/* ___________________________Alert_____popup Rempli____________________________________ */
 
+#popupSupprimer {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: darkcyan;
+  border-radius: 3px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#popupSupprimer.show {
+  visibility: visible;
+  -webkit-animation: fadein 1s, fadeout 0.5s 3s;
+  animation: fadein 1s, fadeout 1s 3s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+/* ___________________________Alert_____popup Mise a Jour____________________________________ */
+
+#popupAJour {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: darkcyan;
+  border-radius: 3px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#popupAJour.show {
+  visibility: visible;
+  -webkit-animation: fadein 1s, fadeout 0.5s 3s;
+  animation: fadein 1s, fadeout 1s 3s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
 /* ___________________________COTÉ GAUCHE________________________________ */
 .haut {
   width: 100%;
@@ -570,7 +730,7 @@ cursor: pointer;
 } 
 /* __________________________________________ */
 .info-div{
-  width: 70%;
+  width: 90%;
   height: 90%;
 }
 .info-div div{
