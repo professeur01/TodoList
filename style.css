@@ -57,6 +57,11 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+.div-chart{
+  width: 100%;
+  height: 29rem;
+  border-radius: 0px 0px 0px 13px;
+}
 
 input {
   width: 95%;
@@ -536,11 +541,13 @@ textarea::placeholder {
   width: 100%;
   height: 65px;
   z-index: 10;
-  border-collapse: separate;
+  border-collapse: collapse;
   overflow-x: hidden;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
-  border-left: 1px solid darkcyan;
+}
+.border-tache{
+    border-left: 1px solid darkcyan;
   border-right: 1px solid darkcyan;
   border-bottom: 1px solid darkcyan;
 }
@@ -551,7 +558,6 @@ textarea::placeholder {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  color: white;
   padding: 8px;
   text-align: center;
   z-index: 1;
@@ -571,25 +577,6 @@ textarea::placeholder {
   cursor: pointer;
 }
 
-.nouveau {
-  height: 65px;
-  z-index: 1;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: #fff;
-  color: #858585;
-  scroll-snap-type: y mandatory;
-}
-
-.terminer {
-  height: 65px;
-  z-index: 1;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  background-color: #2ba1a1a8;
-  color: #fff;
-  scroll-snap-type: y mandatory;
-}
 
 .nu {
   width: 8.8%;
@@ -651,18 +638,14 @@ textarea::placeholder {
 
 /*   ___________________________________________ */
 .nouveau-row {
-  background-color: #fff;
-  color: #858585;
+  background-color: white !important;
+  color: gray !important;
 }
 
-.encours-row {
-  background-color: #fff;
-  color: #858585;
-}
 
 .terminer-row {
-  background-color: #2ba1a1a8;
-  color: #fff;
+  background-color: #257d7d83!important;
+  color: #fff !important;
 }
 
 .selected {
@@ -676,7 +659,7 @@ top: 0px;
 left: Opx;
 width: 100vw;
 height: 100vh;
-background: rgba(0,0,0,0.7);
+background: rgba(0,0,0,0.4);
 z-index: 1;
 display: none;
 }

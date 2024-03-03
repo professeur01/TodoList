@@ -24,7 +24,7 @@ btnAjout.addEventListener("click", () => {
     descriptionValue &&
     statutValue
   ) {
-      const tachesExistants = JSON.parse(localStorage.getItem("taches")) || [];
+    const tachesExistants = JSON.parse(localStorage.getItem("taches")) || [];
     // Création d'un objet pour représenter la tâche
     const nouvelleTache = {
       categorie: categorieValue,
@@ -32,19 +32,17 @@ btnAjout.addEventListener("click", () => {
       date: dateValue,
       description: descriptionValue,
       statut: statutValue,
-      id: tachesExistants.length + 1
+      id: tachesExistants.length + 1,
     };
 
     // Récupération des tâches existantes depuis le local storage
 
     // Ajout de la nouvelle tâche à la liste existante
     tachesExistants.push(nouvelleTache);
-    
 
     // Mise à jour du local storage
     function miseAJourLocalStorage() {
       localStorage.setItem("taches", JSON.stringify(tachesExistants));
-      
     }
     miseAJourLocalStorage();
 
@@ -60,6 +58,7 @@ btnAjout.addEventListener("click", () => {
     // Si toutes les valeurs ne sont pas remplies, affichez un message d'erreur par exemple.
     nonRempli();
   }
+  window.location.href = 'index.html';
 });
 
 //__________________Alert_______________
@@ -85,10 +84,8 @@ const tableTacheTodo = document.getElementById("tache-todo");
 function mettreAJourTable() {
   // Récupération des tâches depuis le local storage
   const tachesExistants = JSON.parse(localStorage.getItem("taches")) || [];
-
   // Effacer le contenu actuel de la table
   tableTacheTodo.innerHTML = "";
-
   // Remplir la table avec les nouvelles données
   tachesExistants.forEach((tache, index) => {
     const row = tableTacheTodo.insertRow();
@@ -105,29 +102,44 @@ function mettreAJourTable() {
             </div></td>
             </tr>
         `;
-    const tr = document.querySelectorAll("#tache-todo tr");
+    //______________________________________________CHART JS___________________________________________________
+
+    // Mise à jour du local storage
+    localStorage.setItem("taches", JSON.stringify(tachesExistants));
+
+// ================chart ancien ===============
+
+
+// ================chart ancien ===============
+
+    tableTacheTodo.classList.add("border-tache");
+    const tr = document.querySelector("#tache-todo tr");
+    // function editBorder() {
     // Ajouter une classe en fonction du statut
-    switch (tache.statut) {
-      case "Nouveau":
-        row.classList.add("nouveau-row");
-        break;
-      case "En-cours":
-        row.classList.add("encours-row");
-        break;
-      case "Terminer":
-        row.classList.add("terminer-row");
-        break;
-      default:
-        break;
-    }
+    //  const nouvelleTache = {
+    //   id: tachesExistants.length + 1
+    // };
+    //  const nouveauId = nouvelleTache.id
+    //  tachesExistants.push(nouvelleTache);
+    //  localStorage.setItem("taches", JSON.stringify(tachesExistants));
+    /* let itemId = tachesExistants.find(item => item.id == nouvelleTache.id); */
+
+    // if (nouveauId % 2 === 0) {
+    // row.classList.add("nouveau-row");
+    //  }else{
+    //   row.classList.add("terminer-row");
+    // }
+    //  }
+    // editBorder()
 
     // Ajouter un écouteur d'événements sur la ligne pour afficher la description
     row.addEventListener("click", () => afficherDescription(index, row));
   });
+
   const body = document.querySelector("body");
   const vue = document.querySelectorAll(".vue");
-  
-//AFFICHAGE DE VUE
+
+  //AFFICHAGE DE VUE
   vue.forEach((element) => {
     element.addEventListener("click", () => {
       tachesExistants.forEach((tacheElement) => {
@@ -153,115 +165,109 @@ function mettreAJourTable() {
   //////////////////////SUPPRIMER TACHE/////////////////////////
   const supprimer = document.querySelectorAll(".supprimer");
 
-  supprimer.forEach((element)=>{
+  supprimer.forEach((element) => {
     element.addEventListener("click", deleteTask);
-   
-  })
+  });
   // Fonction pour supprimer une tâche
-function deleteTask(event) {
-  // Récupération de l'index de la ligne cliquée
-  const index = event.target.parentElement.parentElement.rowIndex - 1;
-  // Récupération des tâches depuis le local storage
-  const tachesExistants = JSON.parse(localStorage.getItem("taches")) || [];
+  function deleteTask(event) {
+    // Récupération de l'index de la ligne cliquée
+    const index = event.target.parentElement.parentElement.rowIndex - 1;
+    // Récupération des tâches depuis le local storage
+    const tachesExistants = JSON.parse(localStorage.getItem("taches")) || [];
 
-  // Suppression de la tâche de la liste
-  tachesExistants.splice(index, 1);
+    // Suppression de la tâche de la liste
+    tachesExistants.splice(index, 1);
 
-  // Mise à jour du local storage
-  localStorage.setItem("taches", JSON.stringify(tachesExistants));
-
-  // Mise à jour de la table
-  mettreAJourTable();
- tableTacheTodo.style.display="none"
-
-
-  // Afficher une notification de succès
-  
-function popupSupprimer() {
-  var x = document.getElementById("popupSupprimer");
-  x.className = "show";
-  setTimeout(function () {
-    x.className = x.className.replace("show", "");
-  }, 4000);
-}
-popupSupprimer()
-}
-/////////////////FIN SUPPRIMER TACHE/////////////////////////
-  ///////////////////////EDITER TACHE///////////////////////////
-
-   const editer = document.querySelectorAll('.editer');
-  editer.forEach((element)=>{
-    element.addEventListener("click", editerTache);
-  
-  })
-  // Fonction pour modifier une tâche
-function editerTache(event) {
-
-  // Récupération de l'index de la ligne cliquée
-  const index = event.target.parentElement.parentElement.parentElement.parentElement.rowIndex;
-
-  // Récupération des tâches depuis le local storage
-  const tachesExistants = JSON.parse(localStorage.getItem("taches")) || [];
-  console.log(tachesExistants[index]);
-
-  // Vérification que la tâche existe
-  if (!tachesExistants[index]) {
-    return;
-  }
-
-  // Récupération de la tâche à modifier
-  //const tache = tachesExistants[index];
-  // Initialisation des valeurs des inputs avec les valeurs de la tâche à modifier
-  categorieSelect.value = tachesExistants[index].categorie;
-  titreInput.value = tachesExistants[index].titre;
-  dateInput.value = tachesExistants[index].date;
-  descriptionTextarea.value = tachesExistants[index].description;
-  statutSelect.value = tachesExistants[index].statut;
-
-  btnAjout.style.display="none";
-  btnMiseAJour.style.display="block";
-
-  // Changement du texte du bouton Ajouter
-  btnAjout.textContent = "Mise à jour";
-
-  // Ajout d'un écouteur d'événement au bouton Ajouter
-  btnMiseAJour.addEventListener("click", () => {
-    console.log(categorieSelect.value);
-    console.log( titreInput.value);
-    console.log(dateInput.value);
-    // Mise à jour des valeurs de la tâche
-    tachesExistants[index].categorie = categorieSelect.value;
-    tachesExistants[index].titre = titreInput.value;
-    tachesExistants[index].date = dateInput.value;
-    tachesExistants[index].description = descriptionTextarea.value;
-    tachesExistants[index].statut = statutSelect.value;
-
-    btnAjout.style.display="block";
-    btnMiseAJour.style.display="none";
+    tableTacheTodo.classList.remove("border-tache");
     // Mise à jour du local storage
     localStorage.setItem("taches", JSON.stringify(tachesExistants));
+
     // Mise à jour de la table
     mettreAJourTable();
-    categorieSelect.value=""
-    titreInput.value=""
-    dateInput.value=""
-    descriptionTextarea.value=""
-    statutSelect.value=""
+
     // Afficher une notification de succès
-    function popupAJour() {
-      var x = document.getElementById("popupAJour");
+
+    function popupSupprimer() {
+      var x = document.getElementById("popupSupprimer");
       x.className = "show";
       setTimeout(function () {
         x.className = x.className.replace("show", "");
       }, 4000);
     }
-    popupAJour()
+    popupSupprimer();
+    window.location.href = 'index.html';
+  }
+  /////////////////FIN SUPPRIMER TACHE/////////////////////////
+  ///////////////////////EDITER TACHE///////////////////////////
+
+  const editer = document.querySelectorAll(".editer");
+  editer.forEach((element) => {
+    element.addEventListener("click", editerTache);
   });
-}
- 
+  // Fonction pour modifier une tâche
+  function editerTache(event) {
+    // Récupération de l'index de la ligne cliquée
+    const index =
+      event.target.parentElement.parentElement.parentElement.parentElement
+        .rowIndex;
 
-    ///////////////////////FIN EDITER TACHE///////////////////////////
+    // Récupération des tâches depuis le local storage
+    const tachesExistants = JSON.parse(localStorage.getItem("taches")) || [];
+    console.log(tachesExistants[index]);
 
+    // Vérification que la tâche existe
+    if (!tachesExistants[index]) {
+      return;
+    }
+
+    // Récupération de la tâche à modifier
+    //const tache = tachesExistants[index];
+    // Initialisation des valeurs des inputs avec les valeurs de la tâche à modifier
+    categorieSelect.value = tachesExistants[index].categorie;
+    titreInput.value = tachesExistants[index].titre;
+    dateInput.value = tachesExistants[index].date;
+    descriptionTextarea.value = tachesExistants[index].description;
+    statutSelect.value = tachesExistants[index].statut;
+
+    btnAjout.style.display = "none";
+    btnMiseAJour.style.display = "block";
+
+    // Changement du texte du bouton Ajouter
+    btnAjout.textContent = "Mise à jour";
+
+    // Ajout d'un écouteur d'événement au bouton Ajouter
+    btnMiseAJour.addEventListener("click", () => {
+      // Mise à jour des valeurs de la tâche
+      tachesExistants[index].categorie = categorieSelect.value;
+      tachesExistants[index].titre = titreInput.value;
+      tachesExistants[index].date = dateInput.value;
+      tachesExistants[index].description = descriptionTextarea.value;
+      tachesExistants[index].statut = statutSelect.value;
+
+      btnAjout.style.display = "block";
+      btnMiseAJour.style.display = "none";
+      // Mise à jour du local storage
+      localStorage.setItem("taches", JSON.stringify(tachesExistants));
+      // Mise à jour de la table
+      mettreAJourTable();
+      categorieSelect.value = "";
+      titreInput.value = "";
+      dateInput.value = "";
+      descriptionTextarea.value = "";
+      statutSelect.value = "";
+      // Afficher une notification de succès
+      function popupAJour() {
+        var x = document.getElementById("popupAJour");
+        x.className = "show";
+        setTimeout(function () {
+          x.className = x.className.replace("show", "");
+        }, 4000);
+      }
+      popupAJour();
+    });
+  }
+
+  ///////////////////////FIN EDITER TACHE///////////////////////////
 }
 
 // Appeler la fonction pour la première fois
@@ -296,3 +302,40 @@ btnAjout.addEventListener("click", () => {
 function togglePopup() {
   document.getElementById("popup-1").classList.toggle("active");
 }
+
+    // Mise à jour du graphique
+
+    // Fonction pour mettre à jour le graphique
+    function updateChart() {
+      // Récupérer les données du local storage
+      const taches = JSON.parse(localStorage.getItem("taches")) || [];
+
+      // Filtrer les tâches par statut
+      const nouveau = taches.filter(
+        (tache) => tache.statut === "Nouveau"
+      ).length;
+      console.log(nouveau);
+      const enCours = taches.filter(
+        (tache) => tache.statut === "En-cours"
+      ).length;
+      const termine = taches.filter(
+        (tache) => tache.statut === "Terminer"
+      ).length;
+      console.log(termine);
+      // Mettre à jour la charte
+      const ctx = document.getElementById("myChart");
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Nouveau", "En cours", "Terminé"],
+          datasets: [
+            {
+              data: [nouveau, enCours, termine],
+              backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+              hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+            },
+          ],
+        },
+      });
+    }
+    updateChart();
